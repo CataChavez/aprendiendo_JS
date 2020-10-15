@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Centro Médico Ñuñoa</title>
 </head>
 <script>
-document.write('<p>Estadisticas centro medico ñuñoa</p>');
+document.write('<p>Estadísticas Centro Médico Ñuñoa</p>');
 
 var radiologia = [
     {hora: '11:00', especialista: 'IGNACIO SCHULZ', paciente: 'FRANCISCA ROJAS', rut: '9878782-1', prevision: 'FONASA'},
@@ -37,9 +36,45 @@ var dental = [
 ];
 
 //Agregar código para el desafio 2 aquí
+//Ejercicio 1
+traumatologia.push(
+    {hora: '9:00', especialista: 'RENÉ POBLETE', paciente: 'ANA GELLONA', rut: '13123329-7', prevision: 'ISAPRE'},
+    {hora: '9:30', especialista: 'MARIA SOLA', paciente: 'RAMIRO ANDRADE', rut: '12221451-K', prevision: 'FONASA'},
+    {hora: '10:00', especialista: 'RAUL LOYOLA', paciente: 'CARMEN ISLA', rut: '10112348-3', prevision: 'ISAPRE'},
+    {hora: '10:30', especialista: 'ANTONIO LARENAS', paciente: 'PABLO LOAYZA', rut: '13453234-1 ', prevision: 'ISAPRE'},
+    {hora: '12:00', especialista: 'MATIAS ARAVENA', paciente: 'A SUSANA POBLETE', rut: '14345656-6', prevision: 'FONASA'}
+)
+console.log(traumatologia)
 
+//EJERCICIO 2
+var eraseFirstElem = radiologia.shift()
+var eraseLastElem = radiologia.pop()
+console.log(eraseFirstElem, eraseFirstElem, radiologia)
+//Ejercicio 3
+document.write('<p>Consultas médicas Dental:</p>')
+var filas_consulta = dental.map(consulta => `<li>${consulta.hora} - ${consulta.especialista} - ${consulta.paciente} - ${consulta.rut} - ${consulta.prevision}</li>`)
+document.write('<ul>' + filas_consulta.join('\n') + '</ul>')
+//Ejercicio 4
+document.write('<p>Nombre de todos pacientes del centro:</p>')
+var nombres_pacientes = []
+radiologia.forEach(consulta => nombres_pacientes.push(consulta.paciente))
+traumatologia.forEach(consulta => nombres_pacientes.push(consulta.paciente))
+dental.forEach(consulta => nombres_pacientes.push(consulta.paciente))
 
+var li_pacientes = nombres_pacientes.map(nombre => `<li>${ nombre } </li>`)
+document.write(`<ul>${li_pacientes.join('\n')}</ul>`)
 
+//Ejercicio 5
+document.write('<p>Previsión de los pacientes de Dental:</p>')
+var pacientes_isapre = dental.filter(paciente => paciente.prevision == 'ISAPRE')
+    .map(paciente => `<li>${paciente.paciente} - ${paciente.prevision}</li>`)
+document.write(`<ul>${pacientes_isapre.join('\n')}</ul>`)
+
+//Ejercicio 6
+document.write('<p>Previsión de los pacientes de Traumatología:</p>')
+var pacientes_fonasa = traumatologia.filter(paciente => paciente.prevision == 'FONASA')
+    .map(pacientef => `<li>${pacientef.paciente} - ${pacientef.prevision}</li>`)
+document.write(`<ul>${pacientes_fonasa.join('\n')}</ul>`)
 
 //Agregar código para el desafio 2 aquí
 
